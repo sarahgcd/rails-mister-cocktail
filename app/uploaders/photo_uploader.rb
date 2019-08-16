@@ -10,6 +10,19 @@ class PhotoUploader < CarrierWave::Uploader::Base
   # This is a sensible default for uploaders that are meant to be mounted:
   include Cloudinary::CarrierWave
 
+  process eager: true  # Force version generation at upload time.
+
+  process convert: 'jpg'
+
+  version :thumnail do
+    resize_to_fit 256, 256
+  end
+
+  version :large_photo do
+    cloudinary_transformation effect: "brightness:30", radius: 20,
+      width: 200, height: 200, crop: :thumb, gravity: :face
+  end
+
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url(*args)
   #   # For Rails 3.1+ asset pipeline compatibility:
