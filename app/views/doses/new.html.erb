@@ -1,0 +1,13 @@
+<div class="container mt-5">
+  <h1>Add a dose for <%= @cocktail.name %></h1>
+
+  <%= simple_form_for [@cocktail, @dose] do |f| %>
+   <%= f.error_notification %>
+    <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+    <%= f.input :description %>
+    <%= f.association :ingredient %>
+    <%= f.submit class: "btn btn-primary"%>
+  <% end %>
+  <br>
+  <%= link_to 'Back', cocktails_path, class: 'btn btn-dark' %>
+</div>
