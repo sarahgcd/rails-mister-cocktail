@@ -2,7 +2,6 @@
   <h1><%= @cocktail.name %></h1>
   <div class="mt-5 mb-5">
     <p>
-      <%= image_tag @cocktail.photo.url(:large_photo) %>
       <h4>Ingredients:</h4>
       <% @cocktail.doses.each do |dose| %>
         <li>
