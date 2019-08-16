@@ -14,5 +14,5 @@ file = JSON.parse(response)
 list = file["drinks"]
 list.each do |item|
   ingredient = item["strIngredient1"]
-  Ingredient.create(name: ingredient)
+  Ingredient.create!(name: ingredient)
 end
