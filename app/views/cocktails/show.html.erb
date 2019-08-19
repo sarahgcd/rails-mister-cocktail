@@ -2,6 +2,12 @@
   <h1><%= @cocktail.name %></h1>
   <div class="mt-5 mb-5">
     <p>
+      <% if @cocktail.photo.present? %>
+        <p> <%= cl_image_tag @cocktail.photo.url(:large_photo)%></p>
+      <% else %>
+        <p><%= image_tag("default_cocktail.jpg", class: "cocktail-pic-detail") %></p>
+      <% end %>
+
       <h4>Ingredients:</h4>
       <% @cocktail.doses.each do |dose| %>
         <li>
@@ -15,3 +21,4 @@
   <%= link_to "Add a new dose", new_cocktail_dose_path(@cocktail), class: 'btn btn-primary' %><br><br>
   <%= link_to 'Back', cocktails_path, class: 'btn btn-dark' %>
 </div>
+
